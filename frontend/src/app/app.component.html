@@ -1,0 +1,16 @@
+<div class="page-shell">
+  <header class="hero panel">
+    <div class="hero-copy">
+      <h1>AI Prompt Library</h1>
+    </div>
+
+    <nav class="hero-actions">
+      <a routerLink="/prompts" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Browse prompts</a>
+      <a routerLink="/add-prompt" routerLinkActive="active">Add new prompt</a>
+    </nav>
+  </header>
+
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

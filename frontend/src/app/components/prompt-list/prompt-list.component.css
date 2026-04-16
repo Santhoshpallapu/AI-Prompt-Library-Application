@@ -1,0 +1,73 @@
+.list-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.prompt-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.prompt-card {
+  padding: 22px;
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.complexity.low {
+  color: var(--green);
+}
+
+.complexity.medium {
+  color: var(--amber);
+}
+
+.complexity.high {
+  color: var(--red);
+}
+
+.created-date {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.prompt-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.4rem;
+}
+
+.card-copy {
+  margin: 0 0 20px;
+  color: var(--muted);
+}
+
+.empty {
+  padding: 28px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .list-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .prompt-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

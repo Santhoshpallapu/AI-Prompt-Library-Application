@@ -1,0 +1,58 @@
+.hero {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 24px;
+  padding: 28px;
+  margin-bottom: 28px;
+  background:
+    linear-gradient(135deg, rgba(255, 248, 239, 0.95), rgba(255, 253, 249, 0.96)),
+    var(--surface);
+}
+
+.hero-copy h1 {
+  margin: 8px 0 10px;
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  line-height: 1.05;
+}
+
+.hero-copy p {
+  margin: 0;
+  max-width: 54ch;
+  color: var(--muted);
+}
+
+.eyebrow {
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  color: var(--brand);
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+.hero-actions a {
+  display: block;
+  padding: 14px 18px;
+  border-radius: 18px;
+  background: rgba(187, 90, 54, 0.08);
+  border: 1px solid transparent;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.hero-actions a:hover,
+.hero-actions a.active {
+  transform: translateY(-1px);
+  border-color: rgba(187, 90, 54, 0.25);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 22px;
+  }
+}

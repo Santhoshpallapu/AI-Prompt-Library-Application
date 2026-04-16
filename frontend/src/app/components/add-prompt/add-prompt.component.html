@@ -1,0 +1,41 @@
+<section class="form-intro">
+  <div>
+    <h2 class="section-title">Add a New Prompt</h2>
+    <p class="section-copy">
+      Use the form below to save a reusable AI image prompt with validation on every required field.
+    </p>
+  </div>
+  <a class="button secondary" routerLink="/prompts">Back to prompts</a>
+</section>
+
+<form [formGroup]="promptForm" (ngSubmit)="submitForm()" class="prompt-form panel">
+  <label class="form-field">
+    <span>Title</span>
+    <input type="text" formControlName="title" placeholder="Example: Dreamy Desert Landscape">
+    <small class="error-text" *ngIf="title?.touched && title?.hasError('required')">Title is required.</small>
+    <small class="error-text" *ngIf="title?.touched && title?.hasError('minlength')">Title must be at least 3 characters.</small>
+    <small class="error-text" *ngIf="title?.touched && title?.hasError('urlTitle')">Title should be a prompt name, not a URL.</small>
+  </label>
+
+  <label class="form-field">
+    <span>Content</span>
+    <textarea rows="7" formControlName="content" placeholder="Describe the image you want to generate in a clear and detailed way."></textarea>
+    <small class="error-text" *ngIf="content?.touched && content?.hasError('required')">Content is required.</small>
+    <small class="error-text" *ngIf="content?.touched && content?.hasError('minlength')">Content must be at least 20 characters.</small>
+  </label>
+
+  <label class="form-field">
+    <span>Complexity (1 to 10)</span>
+    <input type="number" formControlName="complexity" min="1" max="10">
+    <small class="error-text" *ngIf="complexity?.touched && complexity?.hasError('required')">Complexity is required.</small>
+    <small class="error-text" *ngIf="complexity?.touched && (complexity?.hasError('min') || complexity?.hasError('max'))">Complexity must be between 1 and 10.</small>
+  </label>
+
+  <p *ngIf="formError" class="error-text">{{ formError }}</p>
+
+  <div class="form-actions">
+    <button class="button" type="submit" [disabled]="isSubmitting">
+      {{ isSubmitting ? 'Saving...' : 'Save prompt' }}
+    </button>
+  </div>
+</form>

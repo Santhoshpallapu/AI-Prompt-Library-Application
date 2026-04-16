@@ -1,0 +1,38 @@
+<section class="list-header">
+  <div>
+    <h2 class="section-title">Saved Prompts</h2>
+    <p class="section-copy">
+      A simple collection of reusable AI image prompts with difficulty levels for quick scanning.
+    </p>
+  </div>
+
+  <a class="button" routerLink="/add-prompt">Add prompt</a>
+</section>
+
+<p *ngIf="isLoading" class="status">Loading prompts...</p>
+<p *ngIf="!isLoading && errorMessage" class="error-text">{{ errorMessage }}</p>
+
+<section *ngIf="!isLoading && !errorMessage && prompts.length" class="prompt-grid">
+  <article *ngFor="let prompt of prompts" class="prompt-card panel">
+    <div class="card-top">
+      <span class="pill complexity" [ngClass]="getComplexityClass(prompt.complexity)">
+        {{ getComplexityLabel(prompt.complexity) }} · {{ prompt.complexity }}/10
+      </span>
+      <span class="created-date">{{ prompt.created_at | date:'mediumDate' }}</span>
+    </div>
+
+    <h3>{{ prompt.title }}</h3>
+
+    <p class="card-copy">
+      Open this prompt to read the full content and update the live Redis view counter.
+    </p>
+
+    <a class="button secondary" [routerLink]="['/prompts', prompt.id]">View details</a>
+  </article>
+</section>
+
+<section *ngIf="!isLoading && !errorMessage && !prompts.length" class="empty panel">
+  <h3>No prompts yet</h3>
+  <p>Start by adding your first AI image prompt. It will appear here immediately after submission.</p>
+  <a class="button" routerLink="/add-prompt">Create first prompt</a>
+</section>

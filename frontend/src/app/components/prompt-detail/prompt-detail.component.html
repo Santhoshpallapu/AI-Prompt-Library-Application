@@ -1,0 +1,26 @@
+<p *ngIf="isLoading" class="status">Loading prompt details...</p>
+<p *ngIf="!isLoading && errorMessage" class="error-text">{{ errorMessage }}</p>
+
+<article *ngIf="!isLoading && prompt" class="detail panel">
+  <div class="detail-top">
+    <div>
+      <p class="detail-label">Prompt Details</p>
+      <h2>{{ prompt.title }}</h2>
+    </div>
+
+    <div class="meta-box">
+      <span class="pill">{{ getComplexityLabel(prompt.complexity) }} · {{ prompt.complexity }}/10</span>
+      <span class="pill">Views: {{ prompt.view_count }}</span>
+    </div>
+  </div>
+
+  <div class="content-block">
+    <h3>Prompt Content</h3>
+    <p>{{ prompt.content }}</p>
+  </div>
+
+  <div class="detail-footer">
+    <span>Created on {{ prompt.created_at | date:'medium' }}</span>
+    <a class="button secondary" routerLink="/prompts">Back to library</a>
+  </div>
+</article>
