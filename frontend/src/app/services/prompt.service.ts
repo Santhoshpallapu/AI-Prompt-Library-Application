@@ -21,7 +21,7 @@ export interface CreatePromptPayload {
   providedIn: 'root',
 })
 export class PromptService {
-  private readonly baseUrl = '/api/prompts/';
+  private readonly baseUrl = 'https://ai-prompt-library-application-production.up.railway.app/api/prompts/';
 
   constructor(private readonly http: HttpClient) {}
 
